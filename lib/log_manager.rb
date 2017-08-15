@@ -30,6 +30,7 @@ module LogManager
 
     def trigger(log_level, template_name, *args)
       template = TemplatesManager.instance.find(template_name)
+      raise "No template present with name '#{template_name}'" unless template
       template.trigger(log_level, *args)
     end
 
